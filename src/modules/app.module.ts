@@ -7,6 +7,7 @@ import {
 	QueryResolver,
 } from 'nestjs-i18n';
 import { join } from 'path';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
 	imports: [
@@ -26,6 +27,7 @@ import { join } from 'path';
 			],
 			inject: [ConfigService],
 		}),
+		PrismaModule,
 	],
 })
 export class AppModule {}

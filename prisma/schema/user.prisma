@@ -1,0 +1,20 @@
+model User {
+    id String @id @default(cuid())
+
+    email      String  @unique
+    password   String
+    firstname  String
+    lastname   String
+    avatarPath String  @map("avatar_path")
+    isVerified Boolean @default(false)
+
+    role UserRole @default(STUDENT)
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+enum UserRole {
+    STUDENT
+    ADMIN
+}
