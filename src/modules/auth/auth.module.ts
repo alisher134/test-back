@@ -1,4 +1,5 @@
-import { i18nConfig } from '@/config/jwt.config';
+import { JwtStrategy } from '@/common/strategies/jwt.strategy';
+import { jwtConfig } from '@/config/jwt.config';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
@@ -14,7 +15,7 @@ import { RefreshTokenService } from './refresh-token.service';
 	imports: [
 		JwtModule.registerAsync({
 			imports: [ConfigModule],
-			useFactory: i18nConfig,
+			useFactory: jwtConfig,
 			inject: [ConfigService],
 		}),
 		AuthAttemptsLogModule,
@@ -26,6 +27,7 @@ import { RefreshTokenService } from './refresh-token.service';
 		RefreshTokenService,
 		AuthAttemptsService,
 		AuthAttemptsLogService,
+		JwtStrategy,
 	],
 })
 export class AuthModule {}
