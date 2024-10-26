@@ -8,6 +8,8 @@ import {
 } from 'nestjs-i18n';
 import { join } from 'path';
 import { PrismaModule } from './prisma/prisma.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
 	imports: [
@@ -28,6 +30,8 @@ import { PrismaModule } from './prisma/prisma.module';
 			inject: [ConfigService],
 		}),
 		PrismaModule,
+		UserModule,
+		AuthModule,
 	],
 })
 export class AppModule {}

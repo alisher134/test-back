@@ -1,0 +1,22 @@
+{
+	"user": {
+		"email": {
+			"format": "Invalid email format",
+			"notEmpty": "Email field must not be empty"
+		},
+		"firstName": {
+			"format": "FirstName must be a string",
+			"notEmpty": "FirstName must not be empty",
+			"min": "FirstName must be at least 3 characters long"
+		},
+		"lastName": {
+			"format": "LastName must be a string",
+			"notEmpty": "LastName must not be empty",
+			"min": "LastName must be at least 3 characters long"
+		},
+		"password": {
+			"notEmpty": "Password must not be empty",
+			"min": "Password must be at least 8 characters long"
+		}
+	}
+}

@@ -1,0 +1,18 @@
+model AuthAttemptsLog {
+    id        String   @id @default(cuid())
+    createdAt DateTime @default(now()) @map("created_at")
+
+    ipAddress String?
+    message   String
+    status    StatusAuthAttempts
+
+    user  User   @relation(fields: [email], references: [email])
+    email String @map("user_id")
+
+    @@map("auth_attempts_log")
+}
+
+enum StatusAuthAttempts {
+    SUCCESS
+    FAILURE
+}

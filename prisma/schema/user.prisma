@@ -1,17 +1,20 @@
 model User {
-    id String @id @default(cuid())
-
-    email      String  @unique
-    password   String
-    firstname  String
-    lastname   String
-    avatarPath String  @map("avatar_path")
-    isVerified Boolean @default(false)
-
-    role UserRole @default(STUDENT)
-
+    id        String   @id @default(cuid())
     createdAt DateTime @default(now()) @map("created_at")
     updatedAt DateTime @updatedAt @map("updated_at")
+
+    email              String    @unique
+    password           String
+    firstName          String
+    lastName           String
+    avatarPath         String    @map("avatar_path")
+    isVerified         Boolean   @default(false) @map("is_verified")
+    failedAuthAttempts Int       @default(0) @map("failed_auth_attempts")
+    lockedUntil        DateTime? @map("locked_until")
+
+    authAttemptsLog AuthAttemptsLog[]
+
+    role UserRole @default(STUDENT)
 }
 
 enum UserRole {
